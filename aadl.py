@@ -8,6 +8,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from playsound import playsound
 
+# Number of tabs
+NUM_TABS = 5
+# Timeout for waiting for the page to load
+TIMEOUT = 5  # in seconds
+# Delay between opening each tab
+TAB_OPEN_DELAY = 0.5  # in seconds
+
+
 # Path to your chromedriver executable
 CHROME_DRIVER_PATH = 'C:/Users/ramyb/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe'  # Update this path
 
@@ -16,7 +24,7 @@ URL = 'https://aadl3inscription2024.dz/'
 
 # Sound file path
 SUCCESS_SOUND_FILE = './success-1-6297.mp3'  # Update this path
-FAILURE_SOUND_FILE = './error-83494.mp3'  # Update this path
+FAILURE_SOUND_FILE = './error-126627.mp3'  # Update this path
 
 # Initialize Chrome WebDriver with options
 chrome_options = Options()
@@ -53,12 +61,12 @@ try:
                 print(f"Page took longer than {timeout} seconds to load. Retrying...")
                 
         except WebDriverException as e:
-            print(f"Error loading page: {e}. Retrying...")
-            playsound(FAILURE_SOUND_FILE)
+            print(f"Error loading page.\nRetrying...")
+            # playsound(FAILURE_SOUND_FILE)
             
         
         # Wait for some time before retrying
-        time.sleep(5)  # Adjust the sleep time as needed
+        # time.sleep(5)  # Adjust the sleep time as needed
 
 finally:
     # Comment out driver.quit() to keep the browser open
